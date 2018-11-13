@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>abcd</h1>
+	<form method="POST" action="">
+		{{ form.hidden_tag() }}
+		{{form.title.label}}
+		{{form.title}}
+		{{form.description.label}}
+		{{form.description}}
+		{{form.customer.label}}
+		{{form.customer}}
+		{{ form.submit }}
+	</form>
+
+
+{% endblock content %}
