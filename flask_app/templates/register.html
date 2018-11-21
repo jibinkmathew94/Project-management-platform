@@ -1,14 +1,100 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>abcd</h1>
-	<form method="POST" action="">
-		{{ form.hidden_tag() }}
-		{{form.name.label}}
-		{{form.name}}
-		{{form.email.label}}
-		{{form.email}}
-		{{ form.submit }}
-	</form>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register.css') }}">
+<div class="h-100 row justify-content-center align-items-center">
+	<div class="form-group col-md-6 col-lg-4 m-2 pt-4 pl-3 pr-3 border border-info rounded shadow mb-5">
+		<form method="POST" action="">
+			{{ form.hidden_tag() }}
+			<legend class="border-bottom mb-4 pb-2 text-center text-info">Employee Registration</legend>
+			<div class="form-group row">
+				{{ form.name.label(class="col-md-4") }}
+				{% if form.name.errors %}
+					{{ form.name(class="form-control col-md-7 col-11 is-invalid", placeholder="Enter your name here", data_bind="input: name") }}
+					<div class="invalid-feedback offset-md-4 offset-1">
+                    	{% for error in form.name.errors %}
+                        	<span>{{ error }}</span>
+                    	{% endfor %}
+	            	</div>
+	            {% else %}
+					{{ form.name(class="form-control col-md-7 col-11", placeholder="Enter your name here", data_bind="input: name") }}
+	            {% endif %}
+			</div>
+			<div class="form-group row">
+				{{ form.email.label(class="col-md-4") }}
+				{% if form.email.errors %}
+					{{ form.email(class = "form-control col-md-7 col-11 is-invalid", placeholder= "Enter your email id here", data_bind="input: email, event: { blur: validate}") }}
+					<div class=" ml-1 p-0 mt-2  loader" data-bind="visible: emailShowLoader"></div>
+					<div class="invalid-feedback offset-md-4 offset-1">
+			                {% for error in form.email.errors %}
+		                    	{{ error }}
+		                    {% endfor %}
+		            </div>
+		        {% else %}
+					{{ form.email(class = "form-control col-md-7 col-11", placeholder= "Enter your email id here", data_bind="input: email, event: { blur: validate}") }}
+					<div class=" ml-1 p-0 mt-2  loader" data-bind="visible: emailShowLoader"></div>
+					<div class="invalid-feedback offset-md-4 offset-1 offset-md-4 offset-1"></div>
+            	{% endif %}
+            	
+			</div>
+             <div class="form-group row">
+				{{ form.emp_id.label(class="col-md-4") }}
+				{% if form.emp_id.errors %}
+					{{ form.emp_id(class="form-control col-md-7 col-11 is-invalid", placeholder="Enter preferred emp id", data_bind="input: emp_id, event: { blur: validate}") }}
+					<div class=" ml-1 p-0 mt-2  loader" data-bind="visible: empIdShowLoader"></div>
+					<div class="invalid-feedback offset-md-4 offset-1">
+		                {% for error in form.emp_id.errors %}
+	                        <span>{{ error }}</span>
+	                    {% endfor %}
+	            	</div>
+	            {% else %}
+	            	{{ form.emp_id(class="form-control col-md-7 col-11", placeholder="Enter preferred emp id", data_bind="input: emp_id, event: { blur: validate}") }}
+					<div class=" ml-1 p-0 mt-2  loader" data-bind="visible: empIdShowLoader"></div>
+					<div class="invalid-feedback offset-md-4 offset-1"></div>
+				{% endif %}
+			</div>
+			<div class="form-group row">
+				{{ form.password.label(class="col-md-4") }}
+				{% if form.password.errors %}
+					{{ form.password(class="form-control col-md-7 col-11 is-invalid", placeholder="Enter your password here", data_bind="input: password") }}
+					<div class="invalid-feedback offset-md-4 offset-1">
+		                {% for error in form.password.errors %}
+	                        <span>{{ error }}</span>
+	                    {% endfor %}
+		            </div>
+		        {% else %}
+		            {{ form.password(class="form-control col-md-7 col-11", placeholder="Enter your password here", data_bind="input: password") }}
+					<div class="invalid-feedback offset-md-4 offset-1"></div>
+				{% endif %}
+			</div>
+			
+				
+            
+			<div class="form-group row">
+				{{ form.confirm_password.label(class="col-md-4") }}
+				{% if form.confirm_password.errors %}
+					{{ form.confirm_password(class="form-control col-md-7 col-11 is-invalid", placeholder="Confirm your password", data_bind="input: confirmPassword") }}
+					<div class="invalid-feedback offset-md-4 offset-1">
+		                {% for error in form.confirm_password.errors %}
+	                        <span>{{ error }}</span>
+	                    {% endfor %}
+		            </div>
+		        {% else %}
+			        {{ form.confirm_password(class="form-control col-md-7 col-11", placeholder="Confirm your password", data_bind="input: confirmPassword") }}
+						<div class="invalid-feedback offset-md-4 offset-1"></div>
+				{% endif %}
+			</div>
+			<div class="form-group text-center ml-4">
+				{{ form.submit(class="btn btn-info") }}
+			</div>
+		</form>
+	</div>
+</div>
 
+<script type="text/javascript">
+	var url = "{{ url_for('validate') }}"
+	var csrfToken = "{{ form.csrf_token._value() }}"
+</script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/register-1.0.js') }}"></script>
 {% endblock content %}

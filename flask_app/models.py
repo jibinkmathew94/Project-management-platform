@@ -1,14 +1,22 @@
 from flask_login import UserMixin
 from flask_app import db
 
+
+features = db.Table('features',
+	db.Column('employee_id',db.Integer,db.ForeignKey('employee.id'),primary_key=True),
+	db.Column('feature_id',db.Integer,db.ForeignKey('feature.id'),primary_key=True),
+)
+
 class Employee(db.Model, UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
 	emp_id = db.Column(db.String(30), unique=True, nullable=False)
 	name = db.Column(db.String(30), unique=False, nullable=False)
 	email = db.Column(db.String(120), unique=True, nullable=False)
 	password = db.Column(db.String(60), nullable=False)
-	feature_id = db.Column(db.Integer, db.ForeignKey('feature.id'),nullable=True)
-	feature = db.relationship("Feature",backref="assigned_members")
+	features = db.relationship('Feature', secondary=features, lazy=True,
+		backref=db.backref('employees', lazy='joined'))
+	admin	= db.Column(db.Boolean,unique=False,default=False)
+	verified = db.Column(db.Boolean,unique=False,default=False)
 
 	def __repr__(self):
 		return f'Employee {self.name}, Emp_id : {self.emp_id} email : {self.email}'

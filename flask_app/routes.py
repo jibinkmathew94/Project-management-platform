@@ -1,7 +1,7 @@
 from flask_app import app, db
 from flask import request
 from flask import render_template,redirect, url_for
-from flask_app.models import Customer, Project
+from flask_app.models import Customer, Project, Employee
 from flask_app.forms import RegistrationForm, LoginForm, CreateCustomerForm, CreateProjectForm, CreateFeatureForm
 
 
@@ -9,6 +9,28 @@ from flask_app.forms import RegistrationForm, LoginForm, CreateCustomerForm, Cre
 @app.route("/home")
 def home():
 	return render_template('layout.html')
+
+
+@app.route('/validate',methods=['POST'])
+def validate():
+	if 'email' in request.form and Employee.query.filter_by(email = request.form['email']).first():
+		return "error"
+	elif 'emp_id' in request.form and Employee.query.filter_by(emp_id = request.form['emp_id']).first():
+		return "error"
+	else:
+		return "OK"
+
+
+@app.route("/register",methods=['GET','POST'])
+def register():
+	form = RegistrationForm()
+	if form.validate_on_submit():
+		employee = Employee(name=form.name.data,emp_id=form.emp_id.data,email=form.email.data,password=form.password.data)
+		db.session.add(employee)
+		db.session.commit()
+		return redirect(url_for('home'))
+	return render_template('register.html',form=form)
+
 
 
 
@@ -20,7 +42,7 @@ def create_customer():
 		db.session.add(customer)
 		db.session.commit()
 		return redirect(url_for('home'))
-	return render_template('register.html',form=form)
+	return render_template('create_client.html',form=form)
 
 
 @app.route("/create/project",methods=['GET','POST'])
@@ -37,4 +59,7 @@ def create_project():
 def login():
 	return render_template("login.html")
 
-
+# @app.route("/create/feature")
+# def create_feature():
+# 	form = CreateFeatureForm()
+# 	if form.validate_on_submit():
