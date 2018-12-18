@@ -27,28 +27,28 @@ class RegistrationForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-	emp_id = StringField('Emp_id',validators=[DataRequired(), Length(min=5, max=20)])
+	emp_id = StringField('Emp id',validators=[DataRequired(), Length(min=5, max=20)])
 	password = PasswordField('Password', validators=[DataRequired()])
 	remember = BooleanField('Remember Me')
 	submit = SubmitField('Login')
 
-class CreateCustomerForm(FlaskForm):
+class CreateClientForm(FlaskForm):
 	name = StringField('name',validators=[DataRequired()])
 	email = StringField('Email',validators=[DataRequired(), Email()])
-	submit = SubmitField('Add new Customer')
+	submit = SubmitField('Add new Client')
 
 class CreateProjectForm(FlaskForm):
 	title = StringField('Title',validators=[DataRequired()])
 	description = TextAreaField('Content', validators=[DataRequired()])
-	customer = SelectField('Client Company',choices=[])
+	client = SelectField('Client Company', coerce=int, choices=[])
 	submit = SubmitField('Create new project')
 
 class CreateFeatureForm(FlaskForm):
 	title = StringField('Title',validators=[DataRequired()])
 	description = TextAreaField('Content', validators=[DataRequired()])
-	project = SelectField('Project', coerce=int,choices=[])
+	project = SelectField('Project', coerce=int, choices=[])
 	target_date = DateField('Feature completion date',format='%YY-%mm-%dd')
 	submit = SubmitField('Create new project')
     
 
- 
+    
