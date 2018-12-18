@@ -8,6 +8,10 @@
   animation: spin 1s linear infinite;
 }
 
+.bg-color{
+  background-color: white;
+}
+
 /* Safari */
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }

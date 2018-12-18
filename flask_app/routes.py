@@ -38,7 +38,7 @@ def login():
 		employee = Employee.query.filter_by(emp_id=form.emp_id.data).first()
 		if employee and bcrypt.check_password_hash(employee.password, form.password.data):
 			print("inside bcrypt")
-			login_user(employee,remember=false)
+			login_user(employee,remember=False)
 			print("inside login user")
 			return redirect(url_for('home'))
 	return render_template("login.html",form=form)

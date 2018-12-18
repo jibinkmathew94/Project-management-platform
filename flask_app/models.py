@@ -1,6 +1,10 @@
 from flask_login import UserMixin
-from flask_app import db
+from flask_app import db, login_manager
 
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Employee.query.get(int(user_id))
 
 features = db.Table('features',
 	db.Column('employee_id',db.Integer,db.ForeignKey('employee.id'),primary_key=True),
@@ -23,13 +27,13 @@ class Employee(db.Model, UserMixin):
 
 
 
-class Customer(db.Model):
+class Client(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(30), unique=False, nullable=False)
 	email = db.Column(db.String(120), unique=True, nullable=False)
 
 	def __repr__(self):
-		return f'Customer {self.name},email : {self.email}'
+		return f'Client {self.name},email : {self.email}'
 
 
 
@@ -37,8 +41,8 @@ class Project(db.Model):
 	id = db.Column(db.Integer,primary_key=True)
 	title = db.Column(db.String(30), unique=True, nullable=False)
 	description = db.Column(db.Text, nullable=False)
-	customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'))
-	customer = db.relationship("Customer",backref="Projects")
+	client_id = db.Column(db.Integer, db.ForeignKey('client.id'))
+	client = db.relationship("Client",backref="Projects")
 
 	def __repr__(self):
 		return f'Project {self.title}'

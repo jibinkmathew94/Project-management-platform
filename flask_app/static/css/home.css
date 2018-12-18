@@ -1,0 +1,57 @@
+.bg-color{
+	background: #ffffff;
+}
+
+.margin-layout{
+	margin-top: 70px;
+}
+
+.nav-item a{
+	color: #337ab7;
+}
+
+#nav-projects{
+	display: none;
+}
+
+.feature-card{
+	border: 2px solid #f8f9fa;
+	border-radius: 10px;
+	box-shadow: 5px 10px 50px 5px #D3D3D3;
+}
+
+.feature-card .header{
+	border-bottom: 1px solid rgba(0,0,0,.125);
+	color: #606060;
+	overflow: hidden
+}
+
+.thumbnail{
+	border: 1px solid #ddd; /* Gray border */
+	border-radius: 50%;  /* Rounded border */
+  	width: 50px;
+  	margin-right:-7px;
+}
+
+.header .title{
+	font-size: 1.5em;
+}
+
+.header .header-text{
+	float: right;
+	font-size: 1em;
+	padding-top: 5px;
+}
+
+.thumnail-text{
+	font-size: 1.3em;
+}
+
+.thumbnail-heading{
+	font-size:1.1em;
+	margin-right: 5px;
+}
+
+.feature-target-date{
+	text-align: right;
+}

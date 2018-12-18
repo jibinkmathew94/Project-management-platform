@@ -1,0 +1,129 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
+
+<div class="h-100 container-fluid">
+	<div class="h-100 col-md-9 offset-md-1 pt-4 pb-4 bg-color">
+
+		<ul class="nav nav-tabs margin-layout">
+		  <li class="nav-item">
+		    <a class="nav-link" href="#nav-features" data-bind="click: showFeaturesTab, css: { active: featuresActive() }">Features</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#nav-projects" data-bind="click: showProjectsTab, css: { active: projectsActive() }">Projects</a>
+		  </li>
+		</ul>
+		<div>
+		<div class="mt-5">
+			<div id="nav-features" data-bind="switchTabsFade: featuresActive">
+				<div class="feature-card col-md-10 offset-md-1 mt-3">
+					<div class="header p-2">
+						<span class="title">Features</span>
+						<span class="header-text">Project : Awesomegggggggg</span>
+					</div>
+					<div class="p-2">
+						<div class="row pt-2 tb-2">
+							<div class="thumbnail-section col-md-7">
+								<span class="thumbnail-heading">Assigned : </span>
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+							</div>
+							<div class="feature-target-date col-md-5">
+								Target : 21st July 2018
+							</div>
+						</div>
+						<div class="feature-card-description mt-3 mb-4">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum sequi dolorum placeat sint rem asperiores iure itaque, nisi totam. Ducimus, corporis impedit non culpa odit enim nisi soluta accusantium praesentium.
+						</div>
+
+					</div>
+				</div>
+				<div class="feature-card col-md-10 offset-md-1 mt-3">
+					<div class="header p-2">
+						<span class="title">Features</span>
+						<span class="header-text">Project : Awesomegggggggg</span>
+					</div>
+					<div class="p-2">
+						<div class="row pt-2 tb-2">
+							<div class="thumbnail-section col-md-7">
+								<span class="thumbnail-heading">Assigned : </span>
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+							</div>
+							<div class="feature-target-date col-md-5">
+								Target : 21st July 2018
+							</div>
+						</div>
+						<div class="feature-card-description mt-3 mb-4">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum sequi dolorum placeat sint rem asperiores iure itaque, nisi totam. Ducimus, corporis impedit non culpa odit enim nisi soluta accusantium praesentium.
+						</div>
+
+					</div>
+				</div>
+				<div class="feature-card col-md-10 offset-md-1 mt-3">
+					<div class="header p-2">
+						<span class="title">Features</span>
+						<span class="header-text">Project : Awesomegggggggg</span>
+					</div>
+					<div class="p-2">
+						<div class="row pt-2 tb-2">
+							<div class="thumbnail-section col-md-7">
+								<span class="thumbnail-heading">Assigned : </span>
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+							</div>
+							<div class="feature-target-date col-md-5">
+								Target : 21st July 2018
+							</div>
+						</div>
+						<div class="feature-card-description mt-3 mb-4">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum sequi dolorum placeat sint rem asperiores iure itaque, nisi totam. Ducimus, corporis impedit non culpa odit enim nisi soluta accusantium praesentium.
+						</div>
+
+					</div>
+				</div>
+				<div class="feature-card col-md-10 offset-md-1 mt-3">
+					<div class="header p-2">
+						<span class="title">Features</span>
+						<span class="header-text">Project : Awesomegggggggg</span>
+					</div>
+					<div class="p-2">
+						<div class="row pt-2 tb-2">
+							<div class="thumbnail-section col-md-7">
+								<span class="thumbnail-heading">Assigned : </span>
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+								<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+							</div>
+							<div class="feature-target-date col-md-5">
+								Target : 21st July 2018
+							</div>
+						</div>
+						<div class="feature-card-description mt-3 mb-4">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum sequi dolorum placeat sint rem asperiores iure itaque, nisi totam. Ducimus, corporis impedit non culpa odit enim nisi soluta accusantium praesentium.
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div id="nav-projects" data-bind="switchTabsFade: projectsActive">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias facilis porro, neque aliquid, veniam, quidem ab laboriosam assumenda iure voluptates rem ipsum repellendus sint libero? Praesentium, ullam sunt doloremque modi.
+			</div>
+		</div>
+		
+	</div>
+</div>
+<script type="text/javascript" src="{{ url_for('static', filename='js/home-1.0.js') }}"></script>
+{% endblock content%}
