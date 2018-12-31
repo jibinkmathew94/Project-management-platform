@@ -4,10 +4,16 @@
 <h1>abcd</h1>
 	<form method="POST" action="">
 		{{ form.hidden_tag() }}
-		{{form.name.label}}
-		{{form.name}}
-		{{form.email.label}}
-		{{form.email}}
+		{{ form.title.label }}
+		{{ form.title }}
+		{{ form.description.label }}
+		{{ form.description }}
+		{{ form.project.label }}
+		{{ form.project }}
+		{{ form.employees.label }}
+		{{ form.employees }}
+		{{ form.target_date.label }}
+		{{ form.target_date }}
 		{{ form.submit }}
 	</form>
 

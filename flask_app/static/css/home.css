@@ -1,8 +1,10 @@
 .bg-color{
 	background: #ffffff;
+	min-height: 100%;
 }
 
-.margin-layout{
+
+.margin-main{
 	margin-top: 70px;
 }
 
@@ -15,6 +17,12 @@
 }
 
 .feature-card{
+	border: 2px solid #f8f9fa;
+	border-radius: 10px;
+	box-shadow: 5px 10px 50px 5px #D3D3D3;
+}
+
+.project-card{
 	border: 2px solid #f8f9fa;
 	border-radius: 10px;
 	box-shadow: 5px 10px 50px 5px #D3D3D3;

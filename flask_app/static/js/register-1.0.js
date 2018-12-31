@@ -1,3 +1,11 @@
+$.ajaxSetup({
+            	beforeSend: function(xhr, settings) {
+	                if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+	                    xhr.setRequestHeader("X-CSRFToken", csrfToken);
+                	}
+            	}
+        	});
+
 function AppViewModel() {
 	self = this;
 	self.email = ko.observable();
@@ -27,27 +35,19 @@ function AppViewModel() {
                 success: function(data) {
                 	console.log(validator);
                 	validator(false);
-                    console.log(data)  // display the returned data in the console.
+                    console.log(data);  // display the returned data in the console.
                 },
                 error:function(jqXhr, textStatus, errorMessage) {
                 	console.log("error occured" + textStatus + " " + errorMessage);
                 }
             });
-
-            $.ajaxSetup({
-            	beforeSend: function(xhr, settings) {
-	                if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
-	                    xhr.setRequestHeader("X-CSRFToken", csrfToken)
-                	}
-            	}
-        	})
 		
 		}
 
 
 
 		
-	}
+	};
 }
 ko.applyBindings(AppViewModel);
 

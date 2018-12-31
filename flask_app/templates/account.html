@@ -1,0 +1,31 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/account-1.0.css') }}">
+<div class="h-100 container-fluid">
+	<div class="col-md-8 offset-md-2 pt-4 pl-0 pb-4 bg-color">
+		<div class='margin-main pl-4'>
+			<div class="heading pl-3">
+				Account details
+			</div>
+			<div class="row  mt-5">
+				<div class="col-md-4">
+					<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+				</div>
+				<div class="col-md-8">
+					<div class="user mt-3">
+						<div>
+							<div class="name mb-3">{{ current_user.name }}</div>
+							<div class="user-info">
+								<strong>Emp id :</strong> {{ current_user.emp_id }}
+								<br>
+								<strong>Email id:</strong> {{ current_user.email }}
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content%}

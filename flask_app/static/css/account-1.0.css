@@ -1,0 +1,28 @@
+.bg-color{
+	background: #ffffff;
+	min-height: 100%;
+}
+
+.heading{
+	border-bottom: 1px solid rgba(0,0,0,.125);
+	font-size: 2em;
+}
+
+.margin-main{
+	margin-top: 70px;
+}
+
+.thumbnail{
+	border: 1px solid #ddd; /* Gray border */
+	border-radius: 50%;  /* Rounded border */
+  	width: 200px;
+}
+
+.user{
+	font-size: 1.1em;
+}
+
+.name{
+	font-size: 2em;
+	color: #606060;
+}
