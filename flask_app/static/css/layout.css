@@ -13,9 +13,11 @@ body{
 .profile-picture{
 	border: 1px solid #ddd; /* Gray border */
 	border-radius: 50%;  /* Rounded border */
-  	width: 40px;
+  	width: 30px;
+  	height: 30px;
   	margin:0px;
   	padding:0px;
+  	object-fit: cover;
   }
 
 }

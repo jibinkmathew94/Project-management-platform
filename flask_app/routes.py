@@ -1,8 +1,10 @@
 from flask_app import app, db, bcrypt
 from flask import request, jsonify
+from PIL import Image
 import secrets
+import os
 from flask import render_template, redirect, url_for
-from flask_app.models import Client, Project, Employee, Feature, feature_assign
+from flask_app.models import Client, Project, Employee, Feature
 from flask_app.forms import (
     RegistrationForm,
     LoginForm,
@@ -28,13 +30,13 @@ def home():
 @login_required
 @app.route('/features', methods=['POST'])
 def features():
-    data=[]
+    data = []
     for feature in current_user.features:
         data.append({'title': feature.title,
                     'description': feature.description,
                      'target_date': feature.target_date,
                      'project': feature.project.title,
-                     'thumbnails': [{'thumbnail_url': 'https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg'} for employee in feature.employees]})
+                     'thumbnails': [{'thumbnail_url': url_for('static', filename='images/' + employee.profile_picture)} for employee in feature.employees]})
     return jsonify(data)
 
 
@@ -128,7 +130,7 @@ def create_feature():
     form.project.choices = [(project.id, project.title) for project in Project.query.all()]
     form.employees.choices = [(employee.id, employee.name) for employee in Employee.query.all()]
     print(form.target_date.data)
-    if(form.validate_on_submit()):
+    if form.validate_on_submit():
         feature = Feature(title=form.title.data, description=form.description.data, target_date=form.target_date.data, project_id=form.project.data)
         db.session.add(feature)
         if form.employees.data:
@@ -139,6 +141,32 @@ def create_feature():
     else:
         print(form.title.data, form.description.data, form.target_date.data, form.project.data)
     return render_template("create_feature.html", form=form)
+
+
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fp = random_hex + f_ext
+    picture_path = os.path.join(app.root_path, 'static/images', picture_fp)
+    output_size = (200, 200)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(picture_path)
+
+    return picture_fp
+
+
+@login_required
+@app.route('/update-image', methods=['POST'])
+def update_image():
+    print(request.files)
+    if 'picture' in request.files:
+        picture_path = save_picture(request.files['picture'])
+        current_user.profile_picture = picture_path
+        db.session.commit()
+        return url_for('static', filename='images/' + current_user.profile_picture)
+    else:
+        return "error", 400
 
 
 @login_required

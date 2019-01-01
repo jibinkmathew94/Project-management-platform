@@ -10,7 +10,13 @@
 			</div>
 			<div class="row  mt-5">
 				<div class="col-md-4">
-					<img class="thumbnail" src="https://pbs.twimg.com/profile_images/641661554820190208/0pekIUcN_400x400.jpg">
+					<div class="thumbnail-container">
+						<img class="thumbnail" src="{{ url_for('static', filename='images/' + current_user.profile_picture) }}">
+						<form action="/update-image" method="post">
+							<label class="update-image p-1 rounded" for="picture">Update</label>
+							<input id="picture" name="picture" type="file" data-bind="event:{ change: updatePicture }"/>
+						</form>
+					</div>
 				</div>
 				<div class="col-md-8">
 					<div class="user mt-3">
@@ -27,5 +33,9 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	var csrfToken = "{{ csrf_token() }}";
 
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/account-1.0.js') }}"></script>
 {% endblock content%}

@@ -21,7 +21,7 @@ class Employee(db.Model, UserMixin):
     password = db.Column(db.String(60), nullable=False)
     features = db.relationship('Feature', secondary=feature_assign, lazy=True,
                                backref=db.backref('employees', lazy='joined'))
-    profile_picture = db.Column(db.String(20), nullable=False, default='default.jpg')
+    profile_picture = db.Column(db.String(20), nullable=False, default='default.png')
     admin = db.Column(db.Boolean, unique=False, default=False)
     verified = db.Column(db.Boolean, unique=False, default=False)
 
