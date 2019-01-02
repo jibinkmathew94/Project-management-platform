@@ -15,7 +15,14 @@
 				<div class="thumbnail-section col-md-7">
 					<span class="thumbnail-heading">Assigned : </span>
 					<!-- ko foreach: thumbnails -->
-					<img class="thumbnail" data-bind="attr: { src: thumbnail_url }">
+					<div class="thumbnail-tooltip">
+						<img class="thumbnail" data-bind="attr: { src: thumbnail_url }">
+						<div class="tooltiptext">
+							Name: <span data-bind="text: name"></span>
+							<br>
+							Emp id: <span data-bind="text: emp_id"></span>
+						</div>
+					</div>
 					<!-- /ko -->
 				</div>
 				<div class="feature-target-date col-md-5" data-bind="text: target_date"></div>

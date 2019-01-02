@@ -36,7 +36,7 @@ def features():
                     'description': feature.description,
                      'target_date': feature.target_date,
                      'project': feature.project.title,
-                     'thumbnails': [{'thumbnail_url': url_for('static', filename='images/' + employee.profile_picture)} for employee in feature.employees]})
+                     'thumbnails': [{'thumbnail_url': url_for('static', filename='images/' + employee.profile_picture), 'name': employee.name, 'emp_id': employee.emp_id} for employee in feature.employees]})
     return jsonify(data)
 
 

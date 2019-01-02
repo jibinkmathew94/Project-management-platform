@@ -62,6 +62,33 @@
 	margin-right: 5px;
 }
 
+.thumbnail-tooltip{
+	display: inline-block;
+	position: relative;
+	margin-left: -5px;
+}
+
+.thumbnail-tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: #0080FF;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  white-space: nowrap;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: -50%;
+  margin-left:-50%;
+}
+
+.thumbnail-tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 0.9;
+}
+
 .feature-target-date{
 	text-align: right;
 }
